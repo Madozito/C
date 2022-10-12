@@ -264,9 +264,9 @@ servirá para indicar que no se desea ingresar más caracteres). Como salida, el
 mostrar en pantalla la cantidad de vocales que se ingresaron. Realícelo de dos formas diferentes:
 a) asuma que el conjunto puede estar vacío en cuyo caso sólo se ingresará el *.
 b) asuma que el conjunto nunca puede estar vacío. 
-*/
 
-// Parte a
+
+// Parte a, asumiendo que puede ser vacio: WHILE
 char car;
 int cantVocales = 0;
 
@@ -290,12 +290,243 @@ while (car != '*')
     case 'u': cantVocales++; 
         break;
     }
- printf ("Ingrese un caracter: ");
+ printf ("Ingrese un caracter:\n ");
  fflush (stdin);
  scanf ("%c", &car); 
 }
-printf("La cantidad de vocales es: %d", cantVocales);
+printf("La cantidad de vocales es: %d\n", cantVocales);
+
+
+
+// Parte b, asumiendo que NUNCA puede estar vacio: DO WHILE
+char car;
+int cantVocales = 0;
+
+printf("Ingrese un conjunto de caracteres de a uno\n");
+fflush(stdin);
+scanf("%c",&car);
+
+do
+{
+    printf ("Ingrese un caracter:\n");
+    fflush (stdin);
+    scanf ("%c", &car); 
+
+    switch (car)
+    {
+    case 'A':
+    case 'E':
+    case 'I':
+    case 'O':
+    case 'U':
+    case 'a':
+    case 'e':
+    case 'i':
+    case 'o':
+    case 'u': cantVocales++;
+        break;
+
+    }
+
+
+} while (car != '*');
+
+printf("La cantidad de vocales es: %d\n", cantVocales);
+
 
 system("pause");
+
+*/
+/*Ejercicio 10
+Escribir un programa en C++ que lea como entrada un número entero n desde teclado. El
+programa debe calcular la suma de todos los números enteros que hay desde 1 hasta n y mostrar
+dicha suma como salida en pantalla. 
+
+
+int n, i, suma = 0;
+
+printf("Ingrese un numero entero n desde teclado\n");
+scanf("%d",&n);
+
+for (i = 0; i <= n; i++)
+{
+    suma = suma + i;
+}
+
+printf("La suma desde 1 hasta %d es: %d\n",n,suma);
+system("pause");
+
+*/
+/*Ejercicio 11
+Escribir un programa en C++ que pida diez números enteros al usuario como dato de entrada. El
+programa debe sumar los pares por un lado y los impares por otro. Como salida, debe escribir en la
+pantalla ambos resultados. 
+
+const int TOTAL = 10;
+int pares = 0, impares = 0, i, num;
+
+for (i = 0; i <= TOTAL; i++)
+{   
+    printf("Ingrese diez numeros enteros por pantalla\n");
+    scanf("%d",&num);
+
+    if (num % 2 == 0)
+    {
+        pares = pares + num;
+
+    } else
+
+        impares = impares + num;
+}
+
+printf("Los suma de numeros pares es: %d\n",pares);
+printf("Los suma de numeros impares es: %d\n",impares);
+system("pause");
+*/
+
+/*Ejercicio 12
+Escribir un programa en C++ que lea como entrada dos enteros a y b desde teclado. El programa
+debe controlar que b ≥ 0. Una vez hecho el control, calcular la potencia a elevado b. Como salida, el
+programa debe desplegar por pantalla el resultado de la potencia calculada. 
+
+
+int a,b,i;
+int potencia;
+
+printf("Ingrese un entero por teclado\n");
+scanf("%d",&a);
+printf("Ingrese otro entero por teclado\n");
+scanf("%d",&b);
+
+if (b<0)
+{
+    printf("Exponente equivocado\n");
+}
+
+else
+
+potencia = 1;
+
+for (i = 1; i <= b; i++)
+{
+    potencia = potencia * a;
+}
+
+printf("El resultado de la potencia %d elevado por %d es: %d\n",a,b,potencia);
+
+system("pause");
+*/
+/*Ejercicio 13
+Escribir un programa en C++ que lea como entrada dos enteros a y b desde teclado. Como salida,
+el programa debe desplegar los múltiplos de b que existen entre 0 y a. 
+
+int a,b,i;
+
+printf("Ingrese un numero entero a desde teclado\n");
+scanf("%d",&a);
+printf("Ingrese otro numero entero b desde teclado\n");
+scanf("%d",&b);
+
+for (i = b; i <= a; i= i+b)
+{
+ printf("%d es multiplo de %d\n", i, b); 
+
+}
+
+system("pause");
+*/
+/*Ejercicio 14
+Escribir un programa en C++ que, dada una fecha (ingresada por teclado como tres enteros: día,
+mes y año), determinar si es una fecha válida o no. Para este programa se consideran bisiestos los
+años múltiplos de 4. El programa debe desplegar como salida un mensaje indicando el resultado. 
+
+int dia, mes, anio;
+
+printf("Ingrese 3 enteros para: dia, mes y anio\n");
+scanf("%d%d%d",&dia,&mes,&anio);
+
+switch (mes)
+{
+case 1:
+case 3:
+case 5:
+case 7:
+case 8:
+case 10:
+case 12: if (dia >= 1 && dia <= 31)
+         {
+             printf("Fecha Valida\n");
+         }
+         else
+             printf("Fecha no Valida\n");
+         break;
+case 4:
+case 6:
+case 9:
+case 11: if (dia>= 1 && dia <= 30)
+         {
+             printf("Fecha Valida\n");
+         }
+         else
+             printf("Fecha no Valida\n");
+         break;
+case 2: if (anio % 4 == 0)
+        {
+            if (dia >= 1 && dia <= 29)
+            {
+              printf("Fecha Valida\n");
+            }
+            else
+              printf("Fecha no Valida\n");
+            
+        }
+        break;
+default: printf("Fecha no Valida\n");   
+}
+system("pause");
+*/
+/*Ejercicio 15
+Escriba en C++ cuatro programas. Cada uno de ellos debe imprimir en pantalla uno de los
+siguientes patrones de dígitos. 
+
+01234  00000  43210  44444
+01234  11111  43210  33333
+01234  22222  43210  22222
+01234  33333  43210  11111
+01234  44444  43210  00000
+
+
+int i,j;
+ 
+for (i = 1; i <= 5; i++)
+ {
+   for (j = 0; j <= 4; j++)
+   printf ("%d", j);
+  printf ("\n");
+ }
+printf ("\n");
+for (i = 0; i <= 4; i++)
+ {
+   for (j = 1; j <= 5; j++)
+   printf ("%d", i);
+  printf ("\n");
+ } 
+printf ("\n");
+ for (i = 1; i <= 5; i++)
+ {
+   for (j = 4; j >= 0; j--)
+   printf ("%d", j);
+  printf ("\n");
+ } 
+ printf ("\n");
+ for (i = 4; i >= 0; i--)
+ {
+   for (j = 1; j <= 5; j++)
+   printf ("%d", i);
+  printf ("\n");
+ } 
+printf ("\n");
+system("pause");
+*/
 
 }
