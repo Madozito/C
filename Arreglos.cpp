@@ -87,3 +87,12 @@ do
 
  system("pause");
 }
+/*e) Encontrar el menor valor y el mayor valor almacenados en el arreglo, junto con las
+posiciones correspondientes.*/
+
+int mayorValor = 0, menorValor= 0;
+
+
+
+
+
